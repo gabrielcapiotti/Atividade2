@@ -3,7 +3,7 @@ const api = axios.create({
 });
 
 async function signup(event) {
-  event.preventDefault(); // Evita o comportamento padrão do formulário de submeter a página
+  event.preventDefault();
 
   try {
     const email = document.getElementById("floatingInput").value;
@@ -12,7 +12,7 @@ async function signup(event) {
 
     const response = await api.post("signup", { email, password, name });
 
-    console.log(response.data); // Exemplo: Se a API retornar um objeto com o usuário cadastrado, você pode manipulá-lo aqui
+    console.log(response.data);
 
     // Redirecionar para outra página ou realizar ações após o cadastro
     alert("Cadastro realizado com sucesso!");
