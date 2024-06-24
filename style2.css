@@ -1,0 +1,10 @@
+html,
+body {
+  height: 100%;
+  background-image: linear-gradient(to right, #a50000, #35005e);
+}
+
+.form{
+    background-image: linear-gradient(to right, #5b007d, #5e0000); 
+
+}
