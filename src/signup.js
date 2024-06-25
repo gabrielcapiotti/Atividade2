@@ -14,13 +14,15 @@ async function signup(event) {
 
     console.log(response.data);
 
-    // Redirecionar para outra página ou realizar ações após o cadastro
     alert("Cadastro realizado com sucesso!");
+    window.location.href = "./home.html"; // Redireciona para a página de login
   } catch (error) {
     console.error(error);
-    alert("Erro ao realizar o cadastro. Verifique os dados informados.");
+    alert("Erro ao realizar cadastro.");
   }
 }
 
-const signupForm = document.getElementById("signupForm");
-signupForm.addEventListener("submit", signup);
+document.addEventListener("DOMContentLoaded", () => {
+  const signupForm = document.getElementById("signupForm");
+  signupForm.addEventListener("submit", signup);
+});
