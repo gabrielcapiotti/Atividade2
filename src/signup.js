@@ -2,7 +2,7 @@ const api = axios.create({
   baseURL: "http://localhost:3333/",
 });
 
-async function signup(event) {
+function signup(event) {
   event.preventDefault();
 
   try {
@@ -10,19 +10,27 @@ async function signup(event) {
     const password = document.getElementById("floatingPassword").value;
     const name = document.getElementById("floatingName").value;
 
-    const response = await api.post("signup", { email, password, name });
+    console.log("Sending signup request:", { email, password, name });
 
-    console.log(response.data);
-
-    alert("Cadastro realizado com sucesso!");
-    window.location.href = "./home.html"; // Redireciona para a página de login
+    api
+      .post("signup", { email, password, name })
+      .then((response) => {
+        console.log("Signup response:", response.data);
+        alert("Cadastro realizado com sucesso!");
+      })
+      .catch((error) => {
+        console.error("Signup error:", error);
+        alert("Erro ao realizar cadastro.");
+      });
   } catch (error) {
-    console.error(error);
+    console.error("Signup error:", error);
     alert("Erro ao realizar cadastro.");
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
   const signupForm = document.getElementById("signupForm");
-  signupForm.addEventListener("submit", signup);
+  if (signupForm) {
+    signupForm.addEventListener("submit", signup);
+  }
 });
