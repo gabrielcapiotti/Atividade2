@@ -3,34 +3,29 @@ const api = axios.create({
 });
 
 function signup(event) {
-  event.preventDefault();
+  event.preventDefault(); // Impede o envio padrão do formulário
 
-  try {
-    const email = document.getElementById("floatingInput").value;
-    const password = document.getElementById("floatingPassword").value;
-    const name = document.getElementById("floatingName").value;
+  const form = event.target;
+  const email = form.elements["floatingInput"].value;
+  const password = form.elements["floatingPassword"].value;
+  const name = form.elements["floatingName"].value;
 
-    console.log("Sending signup request:", { email, password, name });
-
-    api
-      .post("signup", { email, password, name })
-      .then((response) => {
-        console.log("Signup response:", response.data);
-        alert("Cadastro realizado com sucesso!");
-      })
-      .catch((error) => {
-        console.error("Signup error:", error);
-        alert("Erro ao realizar cadastro.");
-      });
-  } catch (error) {
-    console.error("Signup error:", error);
-    alert("Erro ao realizar cadastro.");
-  }
+  axios
+    .post("http://localhost:3333/signup", {
+      email: email,
+      password: password,
+      name: name,
+    })
+    .then((response) => {
+      alert("Signup Successful!");
+      console.log(response.data);
+    })
+    .catch((error) => {
+      if (error.response) {
+        alert("Signup Failed: " + error.response.data.message);
+      } else {
+        alert("Signup Failed: Network Error");
+      }
+      console.error(error);
+    });
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  const signupForm = document.getElementById("signupForm");
-  if (signupForm) {
-    signupForm.addEventListener("submit", signup);
-  }
-});

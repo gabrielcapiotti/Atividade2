@@ -14,9 +14,9 @@
         <div class="row">
             <div class="col w-100 m-auto p-1 d-flex" style="max-width: 500px;">
                 <form id="signupForm" class="m-auto p-3"
-                    style="background-image: linear-gradient(to right, #714b7f, #a74444); width: 500px; padding: 30px;">
+                    style="background-image: linear-gradient(to right, #714b7f, #a74444); width: 500px; padding: 30px;"
+                    onsubmit="return signup(event)">
                     <h1 class="mb-3">Signup Form</h1>
-
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
                             required>
@@ -27,16 +27,11 @@
                             required>
                         <label for="floatingPassword">Password</label>
                     </div>
-
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingName" placeholder="John Doe" required>
                         <label for="floatingName">Full Name</label>
                     </div>
-
-                    <div>
-                        <button type="submit" class="btn btn-primary w-100 btn-lg my-3">Sign up</button>
-                    </div>
-
+                    <button type="submit" class="btn btn-primary w-100 btn-lg my-3">Sign up</button>
                     <div class="py-3">
                         <p>Already have an account? <a href="./home.html">Sign in!</a></p>
                     </div>
@@ -44,9 +39,8 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./src/signup.js"></script> <!-- Atualizado -->
+    <script src="./src/signup.js"></script>
 </body>
 
 </html>
